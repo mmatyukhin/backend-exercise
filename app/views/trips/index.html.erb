@@ -5,6 +5,15 @@
 <table>
   <thead>
     <tr>
+      <th>Start city name</th>
+      <th>Station begin name</th>
+      <th>Start time</th>
+      <th>End city name</th>
+      <th>Station end name</th>
+      <th>End time</th>
+      <th>Carrier name</th>
+      <th>Total cost</th>
+      <th>Currency</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -12,6 +21,15 @@
   <tbody>
     <% @trips.each do |trip| %>
       <tr>
+        <td><%= trip.start_city_name %></td>
+        <td><%= trip.station_begin_name %></td>
+        <td><%= trip.start_time %></td>
+        <td><%= trip.end_city_name %></td>
+        <td><%= trip.station_end_name %></td>
+        <td><%= trip.end_time %></td>
+        <td><%= trip.carrier_name %></td>
+        <td><%= trip.total_cost %></td>
+        <td><%= trip.currency %></td>
         <td><%= link_to 'Show', trip %></td>
         <td><%= link_to 'Edit', edit_trip_path(trip) %></td>
         <td><%= link_to 'Destroy', trip, method: :delete, data: { confirm: 'Are you sure?' } %></td>

@@ -1,11 +1,10 @@
-# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
-
-# This model initially had no columns defined. If you add columns to the
-# model remove the '{}' from the fixture names and add the columns immediately
-# below each fixture, per the syntax in the comments below
-#
-one: {}
-# column: value
-#
-two: {}
-# column: value
+trip:
+  start_city_name: Киев
+  station_begin_name: 'Автостанция "Киев"'
+  start_time: 2017-05-15 01:00:00
+  end_city_name: Львов
+  station_end_name: 'г. Львов, автостанция № 8'
+  end_time: 2017-05-15 09:00:00
+  carrier_name: '"Павлюк Виталий Иванович" ФЛП'
+  total_cost: 687.93
+  currency: RUB

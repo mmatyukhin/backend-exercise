@@ -11,6 +11,51 @@
     </div>
   <% end %>
 
+  <div class="field">
+    <%= form.label :start_city_name %>
+    <%= form.text_field :start_city_name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :station_begin_name %>
+    <%= form.text_field :station_begin_name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :start_time %>
+    <%= form.datetime_select :start_time %>
+  </div>
+
+  <div class="field">
+    <%= form.label :end_city_name %>
+    <%= form.text_field :end_city_name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :station_end_name %>
+    <%= form.text_field :station_end_name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :end_time %>
+    <%= form.datetime_select :end_time %>
+  </div>
+
+  <div class="field">
+    <%= form.label :carrier_name %>
+    <%= form.text_field :carrier_name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :total_cost %>
+    <%= form.text_field :total_cost %>
+  </div>
+
+  <div class="field">
+    <%= form.label :currency %>
+    <%= form.text_field :currency %>
+  </div>
+
   <div class="actions">
     <%= form.submit %>
   </div>
