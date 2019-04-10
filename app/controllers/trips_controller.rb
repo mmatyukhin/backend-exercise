@@ -4,7 +4,11 @@ class TripsController < ApplicationController
   # GET /trips
   # GET /trips.json
   def index
-    @trips = Trip.all
+    if search_params.present? == true
+      @trips = Trip.search(search_params)
+    else 
+      @trips = Trip.all
+    end
   end
 
   # GET /trips/1
@@ -70,5 +74,9 @@ class TripsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def trip_params
       params.require(:trip).permit(:start_city_name, :station_begin_name, :start_time, :end_city_name, :station_end_name, :end_time, :carrier_name, :total_cost, :currency)
+    end
+
+    def search_params
+      params.permit(:start_city_name, :end_city_name, :start_date)
     end
 end
