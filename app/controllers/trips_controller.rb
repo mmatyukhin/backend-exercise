@@ -4,7 +4,7 @@ class TripsController < ApplicationController
   # GET /trips
   # GET /trips.json
   def index
-    if search_params.present? == true
+    if search_params.present?
       @trips = Trip.search(search_params).page params[:page]
     else
       @trips = Trip.all.page params[:page]
