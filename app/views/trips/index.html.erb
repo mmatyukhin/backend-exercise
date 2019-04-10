@@ -15,4 +15,5 @@
   <%= submit_tag 'Search' %>
 <% end %>
 <br>
-<%= render @trips.limit(25) %>
+<%= render @trips %>
+<%= paginate @trips %>
