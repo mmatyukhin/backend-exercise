@@ -1,17 +1,30 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Trips</h1>
+<h1 class = "mb-4 mt-4">Trips</h1>
 
-<%= form_tag trips_url, method: :get do %>
-    <%= label_tag :start_city_name, 'From' %>
-    <%= select_tag :start_city_name, options_for_select(start_cities_for_select, params[:start_city_name]) %>
-    <%= label_tag :end_city_name, 'To' %>
-    <%= select_tag :end_city_name, options_for_select(end_cities_for_select, params[:end_city_name]) %>
-    <%= label_tag :start_date, 'Date' %>
-    <%= date_field_tag :start_date, params[:start_date],
-                       required: true, placeholder: 'Date' %>
-  <%= submit_tag 'Search' %>
+<%= form_tag trips_url, method: :get, class: 'mb-4' do %>
+    <div class="mb-2">
+      <%= label_tag :start_city_name, 'From' %>
+      <%= select_tag :start_city_name, options_for_select(start_cities_for_select, params[:start_city_name]),
+                                       class: 'px-3 py-2 rounded shadow' %>
+    </div>
+    <div class="mb-2">
+      <%= label_tag :end_city_name, 'To' %>
+      <%= select_tag :end_city_name, options_for_select(end_cities_for_select, params[:end_city_name]),
+                                     class: 'px-3 py-2 rounded shadow' %>
+    </div>
+    <div class="mb-2">
+      <%= label_tag :start_date, 'Date' %>
+      <%= date_field_tag :start_date, params[:start_date],
+                         required: true, placeholder: 'Date',
+                         class: 'px-3 py-2 rounded shadow' %>
+    </div>
+  <%= submit_tag 'Search', class: 'bg-white border rounded py-2 px-3' %>
 <% end %>
 <br>
 <%= render @trips %>
-<%= paginate @trips %>
+<div class="flex justify-center">
+  <span class="text-center mb-2 py-2 px-4 bg-red-light text-white rounded-full pagination">
+    <%= paginate @trips %>
+  </span>
+</div>

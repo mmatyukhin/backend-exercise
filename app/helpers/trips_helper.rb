@@ -20,5 +20,4 @@ def end_cities_for_select
     .map { |trip| trip.end_city_name }
     .uniq
 end
-
 end

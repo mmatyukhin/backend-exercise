@@ -1,3 +1,45 @@
 // Place all the styles related to the trips controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.pagination {
+    a{
+      text-decoration:none;
+      color: white;
+      padding: 5px;
+      &:hover{
+        background-color: #e3342f;
+        border-radius: 2em;
+      }
+    }
+    .first{
+        padding : 0;
+        float: none;
+        border: none;
+    }
+    .prev {
+        padding : 0;
+        float: none;
+        border: none;
+    }
+    .page{
+        padding : 0;
+        float: none;
+        border: none;
+        &.current{
+        color: black;
+        }
+    }
+    .next{
+        padding : 0;
+        float: none;
+        border: none;
+    }
+    .last{
+        padding : 0;
+        float: none;
+        border: none;
+    }
+}
+a, a:visited, a:active {
+  color: inherit;
+}
