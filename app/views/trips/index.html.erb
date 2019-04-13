@@ -4,11 +4,9 @@
 
 <%= form_tag trips_url, method: :get do %>
     <%= label_tag :start_city_name, 'From' %>
-    <%= text_field_tag :start_city_name, params[:start_city_name],
-                       required: true, placeholder: 'From' %>
+    <%= select_tag :start_city_name, options_for_select(start_cities_for_select, params[:start_city_name]) %>
     <%= label_tag :end_city_name, 'To' %>
-    <%= text_field_tag :end_city_name, params[:end_city_name],
-                       required: true, placeholder: 'To' %>
+    <%= select_tag :end_city_name, options_for_select(end_cities_for_select, params[:end_city_name]) %>
     <%= label_tag :start_date, 'Date' %>
     <%= date_field_tag :start_date, params[:start_date],
                        required: true, placeholder: 'Date' %>
