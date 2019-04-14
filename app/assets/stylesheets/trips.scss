@@ -40,3 +40,13 @@
         border: none;
     }
 }
+.vdw{
+  &:visited {
+  color: white;
+  }
+}
+.vdb{
+  &:visited {
+  color: black;
+  }
+}

@@ -46,15 +46,18 @@
       </div>
     </div>
     <div class="w-2/5 p-4 flex items-center justify-center">
-      <%= link_to trip_path(trip), class:"text-xl py-2 px-4 bg-red-light text-white rounded-full no-underline hover:bg-red" do %>
+      <%= link_to trip_path(trip),
+                  class:"text-xl py-2 px-4 bg-red-light text-white rounded-full no-underline hover:bg-red vdw" do %>
         <%= trip.total_cost %> <%= trip.currency %>
-        <% end %>
+      <% end %>
     </div>
 
-    <span class= "mt-1 align-top no-underline">
-      <%= link_to '<i class="far fa-edit"></i>'.html_safe, edit_trip_path(trip), class: 'text-grey mr-1 hover:bg-transparent hover:text-black' %>
-      <%= link_to '<i class="fas fa-times"></i>'.html_safe, trip, method: :delete, data: { confirm: 'Are you sure?' }, class: 'text-grey mr-1 hover:bg-transparent hover:text-black' %>
-    </span>
+    <div class= "mt-1 align-top no-underline">
+      <%= link_to '<i class="far fa-edit"></i>'.html_safe, edit_trip_path(trip),
+                  class: 'text-black hover:bg-transparent vdb' %>
+      <%= link_to '<i class="fas fa-times"></i>'.html_safe, trip, method: :delete, data: { confirm: 'Are you sure?' },
+                  class: 'text-black hover:bg-transparent vdb' %>
+    </div>
 
   </div>
 <% end %>
