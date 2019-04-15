@@ -37,7 +37,7 @@
         </div>
       </div>
       <p class="font-light text-sm mb-4">
-        <span class="text-grey-dark">Carrier:</span> <%= trip.carrier_name %>
+        <span class="text-grey-dark">Carrier:</span> <%= trip.carrier_name.present? ? trip.carrier_name : 'Не указан'  %>
       </p>
       <div class="text-xs mb-1">
           <span class = "mr-1 py-1 px-2 rounded-full bg-red-light text-white">
@@ -54,9 +54,9 @@
 
     <div class= "mt-1 align-top no-underline">
       <%= link_to '<i class="far fa-edit"></i>'.html_safe, edit_trip_path(trip),
-                  class: 'text-black hover:bg-transparent vdb' %>
+                  class: 'text-black hover:text-black hover:bg-transparent vdb' %>
       <%= link_to '<i class="fas fa-times"></i>'.html_safe, trip, method: :delete, data: { confirm: 'Are you sure?' },
-                  class: 'text-black hover:bg-transparent vdb' %>
+                  class: 'text-black hover:text-black hover:bg-transparent vdb' %>
     </div>
 
   </div>
