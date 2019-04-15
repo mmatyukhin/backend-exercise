@@ -1,0 +1,13 @@
+rvm:
+  - 2.5.1
+language: ruby
+
+services:
+  - postgres:latest
+
+before_script:
+  - psql -c 'create database backend_exercise_test;' -U postgres
+
+rspec:
+  script:
+    - bundle exec rails test
