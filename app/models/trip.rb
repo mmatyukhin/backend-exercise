@@ -16,6 +16,7 @@ class Trip < ApplicationRecord
   end
 
   def days_of_the_week
+    @days_of_the_week ||= begin
       trips = Trip
         .where(
           start_city_name: start_city_name,
@@ -36,5 +37,6 @@ class Trip < ApplicationRecord
         end
       end
       result
+    end
   end
 end
