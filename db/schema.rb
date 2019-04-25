@@ -10,10 +10,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_04_09_195421) do
+ActiveRecord::Schema.define(version: 2019_04_25_190117) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "schedules", force: :cascade do |t|
+    t.string "start_city_name", null: false
+    t.string "station_begin_name", null: false
+    t.string "end_city_name", null: false
+    t.string "station_end_name", null: false
+    t.datetime "start_time", null: false
+    t.datetime "end_time", null: false
+    t.string "carrier_name"
+    t.string "frequency", default: [], array: true
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "trips", force: :cascade do |t|
     t.string "start_city_name", null: false
@@ -27,6 +40,7 @@ ActiveRecord::Schema.define(version: 2019_04_09_195421) do
     t.string "currency", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "frequency", default: [], array: true
   end
 
 end
