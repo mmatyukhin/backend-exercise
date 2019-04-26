@@ -35,3 +35,27 @@ Dir.foreach(trips_directory) do |filename|
     trip.save!
   end
 end
+
+Trip.all.each do |trip|
+  freq= Trip
+    .where(
+      start_city_name: trip.start_city_name,
+      station_begin_name: trip.station_begin_name,
+      end_city_name: trip.end_city_name,
+      station_end_name: trip.station_end_name,
+      carrier_name: trip.carrier_name
+    )
+    .where('start_time::time = ?::time', trip.start_time)
+
+    days = freq.pluck(:start_time).map(&:wday).sort
+    hashofdays = days.each_with_object(Hash.new(0)) { |day,counts| counts[day] += 1 }
+
+    result = []
+    hashofdays.each do |hash|
+      if hash[1] > 2
+        result << hash[0]
+      end
+    end
+    trip.frequency = result
+    trip.save!
+end

@@ -2,6 +2,9 @@ class Trip < ApplicationRecord
   validates :start_city_name, :station_begin_name, :start_time, :end_city_name, :station_end_name, :end_time, :total_cost, :currency, presence: true
   validates :total_cost, numericality: { greater_than: 0 }
   paginates_per 20
+
+  scope :had_frequency, -> { where("frequency is not null").order(:start_time) }
+
   def self.search(params)
     result = all
 
@@ -13,30 +16,5 @@ class Trip < ApplicationRecord
     result = result.where(start_time: start_time)
 
     result
-  end
-
-  def days_of_the_week
-    @days_of_the_week ||= begin
-      trips = Trip
-        .where(
-          start_city_name: start_city_name,
-          station_begin_name: station_begin_name,
-          end_city_name: end_city_name,
-          station_end_name: station_end_name,
-          carrier_name: carrier_name
-        )
-        .where('start_time::time = ?::time', start_time)
-
-      days = trips.pluck(:start_time).map(&:wday).sort
-      hashofdays = days.each_with_object(Hash.new(0)) { |day,counts| counts[day] += 1 }
-
-      result = []
-      hashofdays.each do |hash|
-        if hash[1] > 2
-          result << hash[0]
-        end
-      end
-      result
-    end
   end
 end
