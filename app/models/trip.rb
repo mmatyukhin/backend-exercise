@@ -18,6 +18,15 @@ class Trip < ApplicationRecord
     result
   end
 
+  def self.search_without_date(params)
+    result = all
+
+    result = result.where(
+     start_city_name: params[:start_city_name],
+     end_city_name: params[:end_city_name]
+    )
+    result
+  end
   def self.scheldure(params)
     result = all
 

@@ -4,11 +4,12 @@ class TripsController < ApplicationController
   # GET /trips
   # GET /trips.json
   def index
-    if scheldure_params.present?
-      @scheldure = Trip.scheldure(scheldure_params).page(params[:scheldure_page])
-    end
     if search_params.present? && params[:start_date].present?
       @trips = Trip.search(search_params).had_frequency.page params[:page]
+      @scheldure = Trip.scheldure(scheldure_params).page(params[:scheldure_page])
+    elsif scheldure_params.present?
+      @trips = Trip.search_without_date(scheldure_params).had_frequency.page params[:page]
+      @scheldure = Trip.scheldure(scheldure_params).page(params[:scheldure_page])
     else
       @trips = Trip.had_frequency.page params[:page]
     end
