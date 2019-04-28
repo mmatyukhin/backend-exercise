@@ -12,9 +12,11 @@ class Trip < ApplicationRecord
     result = result.where('lower(end_city_name) = ?', params[:end_city_name].downcase)
 
     start_date = Date.parse(params[:start_date])
-    start_time = (start_date.beginning_of_day)..(start_date.end_of_day)
-    result = result.where(start_time: start_time)
-
+    #start_time = (start_date.beginning_of_day)..(start_date.end_of_day)
+    #result = result.where(start_time: start_time)
+    # ignoring year in search now
+    result = result.where('EXTRACT(month FROM start_time) = ? AND EXTRACT(day FROM start_time) = ?', start_date.month, start_date.day)
+    
     result
   end
 
