@@ -1,3 +1,6 @@
+<% if @scheldure.blank? %>
+  <span class = "flex justify-center"> Таких марштрутов не найдено, повторите поиск с другими заданными городами </span>
+<% end %>
 <% @scheldure.each do |trip| %>
   <div class="flex mb-1 p-1 bg-white rounded shadow">
     <div class="w-3/5 p-1 border-r border-dotted">
@@ -15,8 +18,10 @@
     </div>
   </div>
   <% end %>
-<div class="flex justify-center">
-  <div class="text-center mb-2 py-2 px-4 bg-red-light text-white rounded-full pagination">
-    <%= paginate @scheldure, param_name: "scheldure_page"%>
+<% if @scheldure.present? %>
+  <div class="flex justify-center">
+    <div class="text-center mb-2 py-2 px-4 text-white bg-red-light rounded-full pagination">
+      <%= paginate @scheldure, param_name: "scheldure_page"%>
+    </div>
   </div>
-</div>
+<% end %>

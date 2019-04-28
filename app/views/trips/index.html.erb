@@ -37,8 +37,10 @@
 <% else %>
   <%= render @trips %>
 <% end %>
+<% if @trips.present? %>
   <div class="flex justify-center">
     <div class="text-center mb-2 py-2 px-4 bg-red-light text-white rounded-full pagination">
       <%= paginate @trips %>
     </div>
   </div>
+<% end %>
