@@ -4,10 +4,13 @@ class TripsController < ApplicationController
   # GET /trips
   # GET /trips.json
   def index
-    if search_params.present?
-      @trips = Trip.had_frequency.search(search_params).page params[:page]
+    if scheldure_params.present?
+      @scheldure = Trip.scheldure(scheldure_params).page(params[:scheldure_page])
+    end
+    if search_params.present? && params[:start_date].present?
+      @trips = Trip.search(search_params).had_frequency.page params[:page]
     else
-      @trips = Trip.all.had_frequency.page params[:page]
+      @trips = Trip.had_frequency.page params[:page]
     end
   end
 
@@ -78,5 +81,9 @@ class TripsController < ApplicationController
 
     def search_params
       params.permit(:start_city_name, :end_city_name, :start_date)
+    end
+
+    def scheldure_params
+      params.permit(:start_city_name, :end_city_name)
     end
 end

@@ -1,0 +1,22 @@
+<% @scheldure.each do |trip| %>
+  <div class="flex mb-1 p-1 bg-white rounded shadow">
+    <div class="w-3/5 p-1 border-r border-dotted">
+      <div class="text-lg inline-flex font-semibold mr-1">
+        <%= trip.start_time.strftime('%H:%M') %>
+      </div>
+      <span class="text-sm">
+        <%= trip.carrier_name.blank? ? "Неизвестый перевозчик" : trip.carrier_name %>
+      </span>
+    </div>
+    <div class="w-2/5 p-1 flex items-center justify-center">
+      <span class="mr-1 py-1 px-2 rounded-full bg-red-light text-white">
+        <%= days(trip) %>
+      </span>
+    </div>
+  </div>
+  <% end %>
+<div class="flex justify-center">
+  <div class="text-center mb-2 py-2 px-4 bg-red-light text-white rounded-full pagination">
+    <%= paginate @scheldure, param_name: "scheldure_page"%>
+  </div>
+</div>
